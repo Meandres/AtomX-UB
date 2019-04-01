@@ -10,5 +10,37 @@ package atomx;
  * @author nous
  */
 public class Particule {
+    private Position pos;
+    private Direction dir;
+    private boolean active;
+
+    public void setPos(Position pos) {
+        this.pos = pos;
+    }
+    public void setDir(Direction dir) {
+        this.dir = dir;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
+    public Position getPos() {
+        return pos;
+    }
+    public Direction getDir() {
+        return dir;
+    }
+    public boolean isActive() {
+        return active;
+    }
+
+    public Particule(Position pos) {
+        setPos(pos);
+        if (pos.getX()==0||pos.getX()==)
+            setDir(new Direction(1, 0));
+        
+        setActive(true);
+    }
+    
     
 }
