@@ -55,32 +55,33 @@ public class Case {
     }
 
     public Case(Position pos) {
-        this.pos = pos;
+        setPos(pos);
     }
     
     public void action(){
-        if(getContenu().getDirection()[0]!=0){
-            if (getContenu().getDirection()[0]==1){
-                getvD().setContenu(this.getContenu());
-                this.setContenu(null);
-                }
-            else{
-                getvG().setContenu(this.getContenu());
-                this.setContenu(null);
-                }
-            }
-        else{//si la direction de la particule en Y est différente de 0
-                if(getContenu().getDirection()[1]==1){
-                    getvH().setContenu(this.getContenu());
+        if (getContenu().isActive()){
+            if(getContenu().getDir().getX()!=0){
+                if (getContenu().getDir().getX()==1){
+                    getvD().setContenu(this.getContenu());
                     this.setContenu(null);
                     }
                 else{
-                    getvB().setContenu(this.getContenu());
+                    getvG().setContenu(this.getContenu());
                     this.setContenu(null);
                     }
-                }   
-        
-        }
+                }
+            else{//si la direction de la particule en Y est différente de 0
+                    if(getContenu().getDir().getY()==1){
+                        getvH().setContenu(this.getContenu());
+                        this.setContenu(null);
+                        }
+                    else{
+                        getvB().setContenu(this.getContenu());
+                        this.setContenu(null);
+                        }
+                    }       
+            }
+    }
     
     
 }

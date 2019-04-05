@@ -34,10 +34,9 @@ public class Particule {
         return active;
     }
 
-    public Particule(Position pos) {
+    public Particule(Position pos, Direction dir) {
         setPos(pos);
-        if (pos.getX()==0||pos.getX()==)
-            setDir(new Direction(1, 0));
+        setDir(dir);
         
         setActive(true);
     }
