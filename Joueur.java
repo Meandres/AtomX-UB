@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx;
 
 /**
  *
@@ -11,31 +11,18 @@ package vsimple;
  */
 public class Joueur {
     private String pseudo;
-    private int solde;
 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
-    public void setSolde(int solde) {
-        this.solde = solde;
-    }
-    public int getSolde() {
-        return solde;
-    }
+
     public String getPseudo() {
         return pseudo;
     }
 
     public Joueur(String pseudo) {
-        setPseudo(pseudo);
-        setSolde(50);
+        this.pseudo = pseudo;
     }
-
-    @Override
-    public String toString() {
-        return "Joueur{" + "pseudo=" + pseudo + ", solde=" + solde + '}';
-    }
-    
     
     
 }

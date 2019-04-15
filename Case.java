@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx;
 
 /**
  *
@@ -11,22 +11,14 @@ package vsimple;
  */
 public abstract class Case {
     private Particule contenu;
-    private Position pos;
-
-    public void setPos(Position pos) {
-        this.pos = pos;
-    }
+    
     public void setContenu(Particule p) {
         this.contenu = p;
-    }
-    public Position getPos() {
-        return pos;
     }
     public Particule getContenu() {
         return this.contenu;
     }
-    public Case(Position p){
-        setPos(p);
-    }
+    public abstract void action();
+    
     
 }
