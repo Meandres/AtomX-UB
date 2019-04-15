@@ -9,32 +9,30 @@ package vsimple;
  *
  * @author nous
  */
-public class Deviateur extends Obstacle {
+public class Teleporteur extends Obstacle {
+    private Position arrivee;
     private final int poid;
-    private final int tours;//en quart de tour
-    
+
+    public Position getArrivee() {
+        return arrivee;
+    }
     public int getPoid() {
         return poid;
-    }
-    public int getTours() {
-        return tours;
     }
     
     @Override
     public void action(){
-        this.getContenu().tourne(tours);
+        this.getContenu().setPos(getArrivee());
         this.getContenu().nvPoid(this.getPoid());
     }
-    
-    public Deviateur(Position p){
+    public Teleporteur(Position p, int taille){
         super(p);
         this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
-        this.tours=(int)(Math.random()*4);
     }
 
     @Override
     public String toString() {
-        return "Deviateur{"+this.getPos()+ " poid=" + poid + ", tours=" + tours + '}';
+        return "Teleporteur{"+this.getPos() + " arrivee=" + arrivee + ", poid=" + poid + '}';
     }
     
 }

@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx;
+package vsimple;
+import java.util.Scanner;
 
 /**
  *
@@ -11,33 +12,48 @@ package atomx;
  */
 public class Jeu {
     private boolean fini;
-    private Case caseActive;
-    private LesCases casesExternes;
     private Joueur joueur;
+    private LesCases tab;
 
-    public void setFini(boolean fini) {
-        this.fini = fini;
-    }
-    public void setCaseActive(Case caseActive) {
-        this.caseActive = caseActive;
-    }
-    public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
-    }
     public boolean isFini() {
         return fini;
-    }
-    public Case getCaseActive() {
-        return caseActive;
     }
     public Joueur getJoueur() {
         return joueur;
     }
+    public LesCases getTab() {
+        return tab;
+    }
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
+    public void setTab(LesCases tab) {
+        this.tab = tab;
+    }
+    public void getFini(){
+        boolean fini=false;
+        if (getTab().getNbObstacles()==0)
+            fini=true;
+        if (getJoueur().getSolde()<=0)
+            fini=true;
+        
+        }
     
-    public Jeu(String pseudo, int taille){//initialise le plateau de jeu et les instances necessaire au jeu
-        setJoueur(new Joueur(pseudo));
-        
-        
+    
+    public Jeu(int taille){
+        setFini(false);
+        setTab(LesCases.getTab(10));
+        Scanner input=new Scanner(System.in);
+        System.out.println("Entrez votre pseudo :");
+        setJoueur(new Joueur(input.nextLine()));
+        }
+
+    @Override
+    public String toString() {
+        return "Jeu{" + "fini=" + fini + ", joueur=" + joueur + ", tab=" + tab + '}';
     }
     
 }

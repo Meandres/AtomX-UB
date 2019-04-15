@@ -9,10 +9,16 @@ package vsimple;
  *
  * @author nous
  */
-public class AtomX {
-    public static void main(String args[]){
-        Jeu j=new Jeu(10);
-        System.out.println(j.getTab().getNbObstacles());
+public class CNormale extends Case {
+    
+    public CNormale(Position p){
+        super(p);
     }
+
+    @Override
+    public String toString() {
+        return "CNormale{"+this.getPos()+'}';
+    }
+    
     
 }

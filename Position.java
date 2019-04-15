@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx;
+package vsimple;
 
 /**
  *
@@ -41,6 +41,20 @@ public class Position {
     }
     public boolean equals(Position a){
         return this.getX()==a.getX()&&this.getY()==a.getY();
+    }
+    public boolean estPlusGrandeQue(Position a){
+        boolean b=false;
+        if(this.getX()==a.getX()){
+            if(this.getY()!=a.getY()){
+                b=this.getY()>a.getY();
+                }
+            }
+        if(this.getY()==a.getY()){
+            if(this.getX()!=a.getX()){
+                b=this.getX()>a.getX();
+            }
+        }
+    return b;        
     }
     
 }
