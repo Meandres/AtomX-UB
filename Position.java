@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx;
+package vsimple;
 
 /**
  *
@@ -56,5 +56,7 @@ public class Position {
         }
     return b;        
     }
-    
+    public boolean isValide(int taille){//teste si une position de départ est valide
+        return ( (getX()==0 || getX()==(taille-1)) && getY()<taille && getY()>=0 || (getY()==0 || getY()==(taille-1)) && getX()<taille && getX()>=0 );
+    }
 }
