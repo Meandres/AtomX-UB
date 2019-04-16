@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx;
 
 /**
  *
@@ -13,7 +13,6 @@ public class Particule {
     private Position pos;
     private Direction dir;
     private boolean active;
-    private int poid;
 
     public void setPos(Position pos) {
         this.pos = pos;
@@ -24,6 +23,7 @@ public class Particule {
     public void setActive(boolean active) {
         this.active = active;
     }
+    
     public Position getPos() {
         return pos;
     }
@@ -33,56 +33,13 @@ public class Particule {
     public boolean isActive() {
         return active;
     }
-    public int getPoid() {
-        return poid;
-    }
-    public void setPoid(int poid) {
-        this.poid = poid;
-    }
-    
 
-    public Particule(Position pos, Direction dir, int poid) {
+    public Particule(Position pos, Direction dir) {
         setPos(pos);
         setDir(dir);
-        setPoid(poid);
+        
         setActive(true);
     }
-    public void nvPoid(int poidObstacle){
-        setPoid(getPoid()-poidObstacle);
-    }
-    public void tourne(int tours){
-        Direction d=this.getDir();
-        if(tours%2==0){
-            if(tours%4==2){
-                if(d.getX()!=0)
-                    d.setX(-this.getDir().getX());
-                else
-                    d.setY(-this.getDir().getY());
-                }
-            }
-        else{
-            if(tours%4==1){
-                if(d.getX()!=0){
-                    d.setY(d.getX());
-                    d.setX(0);
-                    }
-                else{
-                    d.setX(-d.getY());
-                    d.setY(0);
-                    }
-                }
-            else{//tours%4==3
-                if(d.getX()!=0){
-                    d.setY(-d.getX());
-                    d.setX(0);
-                    }
-                else{
-                    d.setX(d.getY());
-                    d.setY(0);
-                    }
-                }
-            }
-        }
+    
     
 }
-
