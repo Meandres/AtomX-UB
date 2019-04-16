@@ -25,6 +25,7 @@ public abstract class Case {
     public Particule getContenu() {
         return this.contenu;
     }
+    public abstract void action();
     public Case(Position p){
         setPos(p);
     }

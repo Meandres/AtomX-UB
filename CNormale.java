@@ -14,6 +14,10 @@ public class CNormale extends Case {
     public CNormale(Position p){
         super(p);
     }
+    @Override
+    public void action(){
+        
+    }
 
     @Override
     public String toString() {
