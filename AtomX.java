@@ -3,16 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx;
 
 /**
  *
  * @author nous
  */
 public class AtomX {
-    public static void main(String args[]){
-        Jeu j=new Jeu(10);
-        System.out.println(j.getTab().getNbObstacles());
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    Jeu j=new Jeu("Michel", 6);
+    j.creaCotes(10);
+    System.out.println(Ref.getRef().getxMax());
     }
     
 }
