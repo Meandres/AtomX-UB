@@ -13,6 +13,7 @@ public class Joueur {
     private String pseudo;
     private int solde;
     private Particule particule;
+    private boolean gagne;
 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
@@ -22,6 +23,12 @@ public class Joueur {
     }
     public void setParticule(Particule particule) {
         this.particule = particule;
+    }
+    public void setGagne(boolean f){
+        this.gagne=f;
+    }
+    public boolean getGagne(){
+        return gagne;
     }
     public int getSolde() {
         return solde;
@@ -37,6 +44,7 @@ public class Joueur {
     public Joueur(String pseudo) {
         setPseudo(pseudo);
         setSolde(50);
+        setGagne(false);
     }
 
     @Override

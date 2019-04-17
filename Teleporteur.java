@@ -16,6 +16,9 @@ public class Teleporteur extends Obstacle {
     public Position getArrivee() {
         return arrivee;
     }
+    public void setArrivee(Position p){
+        this.arrivee=p;
+    }
     public int getPoid() {
         return poid;
     }
@@ -28,6 +31,12 @@ public class Teleporteur extends Obstacle {
     public Teleporteur(Position p, int taille){
         super(p);
         this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
+        this.arrivee=new Position((int)(Math.random()*taille), (int)(Math.random()*taille));
+    }
+    public Teleporteur(Position p, int poid, Position arrivee){
+        super(p);
+        this.poid=poid;
+        setArrivee(arrivee);
     }
 
     @Override

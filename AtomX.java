@@ -11,10 +11,13 @@ package vsimple;
  */
 public class AtomX {
     public static void main(String args[]){
-        Jeu j=new Jeu(10);
-        do{
+        byte parametre=1;
+        Jeu j=new Jeu(parametre);
+        j.getFini();
+        /*do{
             j.tour();
         }while(!j.isFini());
+        */
     }
     
 }

@@ -30,6 +30,10 @@ public class Position {
         setX(x);
         setY(y);
     }
+    public Position(Position p){
+        setX(p.getX());
+        setY(p.getY());
+    }
     @Override
     public String toString() {
         return "P x: " + x + ", y: " + y;

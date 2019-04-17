@@ -34,17 +34,16 @@ public class Jeu {
         this.tab = tab;
     }
     public void getFini(){
-        boolean tourfini=false;
-        if (getTab().getNbObstacles()==0||getJoueur().getSolde()<=0)
-            tourfini=true;
-        setFini(tourfini);
+        System.out.println(getTab().getNbObstacles()==0 || getJoueur().getSolde()<=0);
+        //setFini(getTab().getNbObstacles()==0 || getJoueur().getSolde()<=0);
+        //getJoueur().setGagne(getTab().getNbObstacles()==0 && getJoueur().getSolde()>0);
         }
     public void tour(){
         Scanner input=new Scanner(System.in);
         Position p;
-        getTab().getCases()[5][5]=new Prison(new Position(5,5));
+        //getTab().getCases()[5][5]=new Prison(new Position(5,5));
         do{
-        System.out.println("Entrez l'endroit où vous souhaitez faire commencez votre particule.");
+        System.out.println("Entrez l'endroit où vous souhaitez faire commencer votre particule.");
         int x=input.nextInt();
         int y=input.nextInt();
         p=new Position(x, y);
@@ -66,7 +65,10 @@ public class Jeu {
             System.out.println("Vous n'avez pas récupéré votre particule.");
         }
         System.out.println("Votre nouveau solde est :" + getJoueur().getSolde());
-        getFini();
+        //getFini();
+        if (getJoueur().getGagne()){
+            System.out.println("Vous avez gagné.");
+        }
     }
     
     
@@ -77,6 +79,13 @@ public class Jeu {
         System.out.println("Entrez votre pseudo :");
         setJoueur(new Joueur(input.nextLine()));
         }
+    public Jeu(byte parametre){
+        setFini(false);
+        setTab(LesCases.getTab(parametre));
+        Scanner input=new Scanner(System.in);
+        System.out.println("Entrez votre pseudo :");
+        setJoueur(new Joueur(input.nextLine()));
+    }
 
     @Override
     public String toString() {

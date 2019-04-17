@@ -31,6 +31,11 @@ public class Deviateur extends Obstacle {
         this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
         this.tours=(int)(Math.random()*4);
     }
+    public Deviateur(Position p, int poid, int tours){
+        super(p);
+        this.poid=poid;
+        this.tours=tours;
+    }
 
     @Override
     public String toString() {

@@ -33,6 +33,11 @@ public class Prison extends Obstacle {
         setOccupee(false);
         this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
     }
+    public Prison(Position p, int poid){
+        super(p);
+        setOccupee(false);
+        this.poid=poid;
+    }
 
     @Override
     public String toString() {
