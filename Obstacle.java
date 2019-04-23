@@ -3,22 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx_1_0;
 
 /**
  *
  * @author nous
  */
 public abstract class Obstacle extends Case {
+    private int poid;
     private static final String[] obstacles = {"Deviateur", "Teleporteur", "Prison"};
     public static final int PoidMaxObstacles=4;
-    
+
+    public int getPoid() {
+        return poid;
+    }
+    public void setPoid(int poid) {
+        this.poid = poid;
+    }
     
     
     public Obstacle(Position p){
         super(p);
     }
-    public abstract void action();
+    @Override
+    public void action(){
+        Position pos=getContenu().getPos();
+        Direction dir=getContenu().getDir();
+        pos.setX(pos.getX()+dir.getX());
+        pos.setY(pos.getY()+dir.getY());
+    }
     
     public static Obstacle CreaObstacles(int i, int j, int taille){
         int rand;

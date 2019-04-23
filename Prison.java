@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx_1_0;
 
 /**
  *
@@ -11,7 +11,6 @@ package vsimple;
  */
 public class Prison extends Obstacle {
     private boolean occupee;
-    private final int poid;
 
     public boolean isOccupee() {
         return occupee;
@@ -19,29 +18,27 @@ public class Prison extends Obstacle {
     public void setOccupee(boolean occupee) {
         this.occupee = occupee;
     }
-    public int getPoid() {
-        return poid;
-    }
     
     @Override
     public void action(){
         this.getContenu().setActive(false);
         this.getContenu().nvPoid(this.getPoid());
+        this.setOccupee(true);
     }
     public Prison(Position p){
         super(p);
         setOccupee(false);
-        this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
+        setPoid((int)(Math.random()*Obstacle.PoidMaxObstacles)+1);
     }
     public Prison(Position p, int poid){
         super(p);
         setOccupee(false);
-        this.poid=poid;
+        setPoid(poid);
     }
 
     @Override
     public String toString() {
-        return "Prison{"+this.getPos()+ " occupee=" + occupee + ", poid=" + poid + '}';
+        return "Prison{"+this.getPos()+ " occupee=" + occupee + ", poid=" + getPoid() + '}';
     }
     
     

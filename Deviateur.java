@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx_1_0;
 
 /**
  *
  * @author nous
  */
 public class Deviateur extends Obstacle {
-    private final int poid;
     private final int tours;//en quart de tour
-    
-    public int getPoid() {
-        return poid;
-    }
+   
     public int getTours() {
         return tours;
     }
@@ -24,22 +20,23 @@ public class Deviateur extends Obstacle {
     public void action(){
         this.getContenu().tourne(tours);
         this.getContenu().nvPoid(this.getPoid());
+        super.action();
     }
     
     public Deviateur(Position p){
         super(p);
-        this.poid=(int)(Math.random()*Obstacle.PoidMaxObstacles)+1;
+        setPoid((int)(Math.random()*Obstacle.PoidMaxObstacles)+1);
         this.tours=(int)(Math.random()*4);
     }
     public Deviateur(Position p, int poid, int tours){
         super(p);
-        this.poid=poid;
+        setPoid(poid);
         this.tours=tours;
     }
 
     @Override
     public String toString() {
-        return "Deviateur{"+this.getPos()+ " poid=" + poid + ", tours=" + tours + '}';
+        return "Deviateur{"+this.getPos()+ " poid=" + getPoid() + ", tours=" + tours + '}';
     }
     
 }

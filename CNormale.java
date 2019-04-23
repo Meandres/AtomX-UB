@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx_1_0;
 
 /**
  *
@@ -16,8 +16,11 @@ public class CNormale extends Case {
     }
     @Override
     public void action(){
-        
-    }
+        Position pos=getContenu().getPos();
+        Direction dir=getContenu().getDir();
+        pos.setX(pos.getX()+dir.getX());
+        pos.setY(pos.getY()+dir.getY());
+        }
 
     @Override
     public String toString() {

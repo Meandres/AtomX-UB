@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vsimple;
+package atomx_1_0;
 
 /**
  *
@@ -13,11 +13,9 @@ public class AtomX {
     public static void main(String args[]){
         byte parametre=1;
         Jeu j=new Jeu(parametre);
-        j.getFini();
-        /*do{
+        do{
             j.tour();
         }while(!j.isFini());
-        */
     }
     
 }
