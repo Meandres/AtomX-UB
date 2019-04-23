@@ -96,7 +96,7 @@ public class Jeu {
     
     public Jeu(int taille){
         setFini(false);
-        setTab(LesCases.getTab(10));
+        setTab(LesCases.getTab(taille));
         Scanner input=new Scanner(System.in);
         System.out.println("Entrez votre pseudo :");
         setJoueur(new Joueur(input.nextLine()));
