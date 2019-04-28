@@ -46,6 +46,11 @@ public class Joueur {
         setSolde(50);
         setGagne(false);
     }
+    
+    public Joueur()
+    {
+        
+    }
 
     @Override
     public String toString() {
