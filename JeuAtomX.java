@@ -22,7 +22,6 @@ public class JeuAtomX extends javax.swing.JFrame {
     private Joueur joueur;
     // private LesJoueurs lj;
     private Jeu lejeu;
-
     public Joueur getJoueur() 
     {
         return this.joueur;
@@ -70,8 +69,8 @@ public class JeuAtomX extends javax.swing.JFrame {
                             }
                         });
                         button.setName(""+cpt);
-                        PCentre.add(button);
                         cpt++;
+                        PCentre.add(button);
                     } 
                 }
                 else
@@ -90,14 +89,58 @@ public class JeuAtomX extends javax.swing.JFrame {
     private void buttonActionPerformed(ActionEvent evt)
     {
         JButton boutonclique = (JButton)evt.getSource();
-        Integer nombre = Integer.parseInt(boutonclique.getName());
-        if(nombre>=0 && nombre<=Math.sqrt(this.lejeu.getTaille()) || nombre>=3*this.lejeu.getTaille()+1 && nombre<=this.lejeu.getTaille())
+        int nombre = Integer.parseInt(boutonclique.getName());
+        if((nombre>=1 && nombre<=this.lejeu.getTaille()))
         {
-            this.lejeu.tour(nombre, 0);
+            this.lejeu.tour(nombre-1, 0);
         }
-        else //if(((nombre%(Math.sqrt(this.lejeu.getTaille()))-1)%2==0))
+        else if((nombre>=3*this.lejeu.getTaille()+1 && nombre<=Math.pow(this.lejeu.getTaille(), 2)))
         {
-            this.lejeu.tour(0, (int) (nombre%Math.sqrt(this.lejeu.getTaille())-1));
+            this.lejeu.tour((nombre%(3*this.lejeu.getTaille()))-1, this.lejeu.getTaille()-1);
+        }
+        
+        /*else if((nombre%(this.lejeu.getTaille()))%2!=0)
+        {
+            System.out.println((int)(nombre%this.lejeu.getTaille())+"eeeeeraeraerarea");
+            int temp;
+            if((int) (nombre%this.lejeu.getTaille())==1)
+            {
+                System.out.println((int) (nombre%this.lejeu.getTaille())+"eeee");
+                this.lejeu.tour(0, (int) (nombre%this.lejeu.getTaille()));
+                
+            }
+            else
+            {
+                temp = nombre%this.lejeu.getTaille()-2;
+                this.lejeu.tour(temp, 0);
+            }
+            
+        }*/
+        else if((nombre%2==0 && this.lejeu.getTaille()%2!=0) || (nombre%2!=0 && this.lejeu.getTaille()%2==0))
+        {
+            if(nombre%this.lejeu.getTaille()==1)
+               this.lejeu.tour(0, nombre%this.lejeu.getTaille()-1);
+            else if(nombre%this.lejeu.getTaille()==3)
+                this.lejeu.tour(0, nombre%this.lejeu.getTaille()-2);
+            else if(nombre%this.lejeu.getTaille()==0)
+                this.lejeu.tour(0, nombre%this.lejeu.getTaille()+2);
+            else if(nombre%this.lejeu.getTaille()==2)
+                this.lejeu.tour(0, nombre%this.lejeu.getTaille()+1);
+            else if(nombre%this.lejeu.getTaille()==4)
+                this.lejeu.tour(0, nombre%this.lejeu.getTaille());
+        }
+        else
+        {
+            if(nombre%this.lejeu.getTaille()==1)
+               this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()+2);
+            else if(nombre%this.lejeu.getTaille()==3)
+                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()+1);
+            else if(nombre%this.lejeu.getTaille()==0)
+                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille());
+            else if(nombre%this.lejeu.getTaille()==2)
+                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()-1);
+            else if(nombre%this.lejeu.getTaille()==4)
+                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()-2);
         }
     }
     
