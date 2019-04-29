@@ -118,29 +118,11 @@ public class JeuAtomX extends javax.swing.JFrame {
         }*/
         else if((nombre%2==0 && this.lejeu.getTaille()%2!=0) || (nombre%2!=0 && this.lejeu.getTaille()%2==0))
         {
-            if(nombre%this.lejeu.getTaille()==1)
-               this.lejeu.tour(0, nombre%this.lejeu.getTaille()-1);
-            else if(nombre%this.lejeu.getTaille()==3)
-                this.lejeu.tour(0, nombre%this.lejeu.getTaille()-2);
-            else if(nombre%this.lejeu.getTaille()==0)
-                this.lejeu.tour(0, nombre%this.lejeu.getTaille()+2);
-            else if(nombre%this.lejeu.getTaille()==2)
-                this.lejeu.tour(0, nombre%this.lejeu.getTaille()+1);
-            else if(nombre%this.lejeu.getTaille()==4)
-                this.lejeu.tour(0, nombre%this.lejeu.getTaille());
+            this.lejeu.tour((nombre-this.lejeu.getTaille())/2, 0);
         }
         else
         {
-            if(nombre%this.lejeu.getTaille()==1)
-               this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()+2);
-            else if(nombre%this.lejeu.getTaille()==3)
-                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()+1);
-            else if(nombre%this.lejeu.getTaille()==0)
-                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille());
-            else if(nombre%this.lejeu.getTaille()==2)
-                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()-1);
-            else if(nombre%this.lejeu.getTaille()==4)
-                this.lejeu.tour(this.lejeu.getTaille()-1, nombre%this.lejeu.getTaille()-2);
+            this.lejeu.tour((nombre-this.lejeu.getTaille())/2, this.lejeu.getTaille()-1);
         }
     }
     
@@ -248,6 +230,7 @@ public class JeuAtomX extends javax.swing.JFrame {
       {
           jMenuItem2.setEnabled(false);
           this.lejeu = new Jeu(optiondiag.getTaille(), this);
+          System.out.println(optiondiag.getTaille());
           initJeu(optiondiag.getTaille());
       }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
