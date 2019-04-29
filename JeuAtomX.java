@@ -121,8 +121,9 @@ public class JeuAtomX extends javax.swing.JFrame {
             this.lejeu.tour((nombre-this.lejeu.getTaille())/2, 0);
         }
         else
-        {
-            this.lejeu.tour((nombre-this.lejeu.getTaille())/2, this.lejeu.getTaille()-1);
+        {     
+            System.out.println((nombre-this.lejeu.getTaille())/2-1);
+            this.lejeu.tour((nombre-this.lejeu.getTaille())/2-1, this.lejeu.getTaille()-1);
         }
     }
     
