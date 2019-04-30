@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_0;
+package atomx_1_1;
 
 /**
  *
@@ -45,6 +45,11 @@ public class Joueur {
         setPseudo(pseudo);
         setSolde(50);
         setGagne(false);
+    }
+    
+    public Joueur()
+    {
+        
     }
 
     @Override

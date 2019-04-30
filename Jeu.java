@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_0;
+
+package atomx_1_1;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,7 +17,9 @@ public class Jeu {
     private boolean fini;
     private Joueur joueur;
     private LesCases tab;
-
+    private JeuAtomX fenetre;
+    
+    
     public boolean isFini() {
         return fini;
     }
@@ -25,6 +29,12 @@ public class Jeu {
     public LesCases getTab() {
         return tab;
     }
+    
+    public int getTaille()
+    {
+        return tab.getCases().length;
+    }
+    
     public void setFini(boolean fini) {
         this.fini = fini;
     }
@@ -38,19 +48,15 @@ public class Jeu {
         setFini(getTab().getNbObstacles()==0 || getJoueur().getSolde()<=0);
         getJoueur().setGagne(getTab().getNbObstacles()==0 && getJoueur().getSolde()>0);
         }
-    public void tour(){
+    public void tour(int x, int y)
+    {
+        
         Scanner input=new Scanner(System.in);
-        Position p;
-        int poid, x, y;
+        Position p = new Position (x, y); int poid;
         String msg; boolean continuer=true;
-        //getTab().getCases()[5][5]=new Prison(new Position(5,5));
-        do{
-        System.out.println("Entrez l'endroit où vous souhaitez faire commencer votre particule.");
-        x=input.nextInt();
-        y=input.nextInt();
-        p=new Position(x, y);
-        }while(!p.isValide(getTab().getCases().length));
-        System.out.println("Entrez le poid que vous souhaitez attribuer à la particule :");
+        if(!p.isValide(getTab().getCases().length))
+            System.exit(0);
+       System.out.println("Entrez le poids que vous souhaitez attribuer à la particule :");
         do{
             poid=input.nextInt();
             }while(getJoueur().getSolde()-poid<0);
@@ -62,12 +68,19 @@ public class Jeu {
         }while(getJoueur().getParticule().isActive());
         x=getJoueur().getParticule().getPos().getX(); y=getJoueur().getParticule().getPos().getY();
         if(x==-1 || x==getTab().getCases().length || y==-1 || y==getTab().getCases().length){
-            System.out.println("Vous avez récupéré votre particule avec un poid de "+ getJoueur().getParticule().getPoid()+ " sur la case "+getJoueur().getParticule().getPos());
+            this.fenetre.Historique.append("\nVous avez récupéré votre particule avec un poids de "+ getJoueur().getParticule().getPoid()+ " sur la case "+getJoueur().getParticule().getPos());
+            this.fenetre.pack();
+            System.out.println("\nVous avez récupéré votre particule avec un poids de "+ getJoueur().getParticule().getPoid()+ " sur la case "+getJoueur().getParticule().getPos());
             getJoueur().setSolde(getJoueur().getSolde()+getJoueur().getParticule().getPoid());
             }
-        else{
-            System.out.println("Vous n'avez pas récupéré votre particule.");
+        else
+        {
+            this.fenetre.Historique.append("\nVous n'avez pas récupéré votre particule.");
+            this.fenetre.pack();
+            System.out.println("\nVous n'avez pas récupéré votre particule.");
         }
+        this.fenetre.pack();
+        this.fenetre.repaint();
         System.out.println("Voulez-vous faire une hypothèse ?");
         do{
             msg=input.nextLine();
@@ -85,28 +98,35 @@ public class Jeu {
                 case "n": continuer=false; break;
             }
         }while(continuer);
-        System.out.println("Votre nouveau solde est :" + getJoueur().getSolde());
+        this.fenetre.Historique.append("\nVotre nouveau solde est :" + getJoueur().getSolde());
         getFini();
         if (getJoueur().getGagne())
-            System.out.println("Vous avez gagné.");
+            this.fenetre.Historique.append("\nVous avez gagné.");
         if(!getJoueur().getGagne()&&getJoueur().getSolde()<=0)
-            System.out.println("Vous avez perdu.");
+            this.fenetre.Historique.append("\nVous avez perdu.");
     }
     
     
-    public Jeu(int taille){
+    public Jeu(int taille, JeuAtomX fenetre){
+        this.fenetre = fenetre;
         setFini(false);
-        setTab(LesCases.getTab(taille));
-        Scanner input=new Scanner(System.in);
-        System.out.println("Entrez votre pseudo :");
-        setJoueur(new Joueur(input.nextLine()));
+        setJoueur(this.fenetre.getJoueur());
+        // setTab(LesCases.getTab(taille));
+        setTab(new LesCases(taille).getTab(taille));
         }
-    public Jeu(byte parametre){
+    
+    public Jeu(JeuAtomX fenetre){
+        this.fenetre = fenetre;
+        setFini(false);
+        setJoueur(this.fenetre.getJoueur());
+        setTab(LesCases.getTab(10));
+        }
+        
+    public Jeu(byte parametre, JeuAtomX fenetre){
+        this.fenetre = fenetre;
+        setJoueur(this.fenetre.getJoueur());
         setFini(false);
         setTab(LesCases.getTab(parametre));
-        Scanner input=new Scanner(System.in);
-        System.out.println("Entrez votre pseudo :");
-        setJoueur(new Joueur(input.nextLine()));
     }
 
     @Override
@@ -157,11 +177,13 @@ public class Jeu {
         Position p=hypoPos();
         Scanner input=new Scanner(System.in);
         boolean continuer=true;
-        Obstacle o= (Obstacle)getTab().getCases()[p.getX()][p.getY()];
+        Obstacle o = null;
+        if(p!= null)
+            o = (Obstacle)getTab().getCases()[p.getX()][p.getY()];
         int corr=0;//doit etre un int pour distinguer les trois cas : pas d'hypoNature(0), hypoNature correcte(2) et hypoNature fausse(1)
         String msg;
-        if(p!=null){
-            System.out.println("Votre hypothèse sur la position est correcte.");
+        if(p!=null && o!=null){
+            this.fenetre.Historique.append("\nVotre hypothèse sur la position est correcte.");
             System.out.println("Voulez-vous faire une hypothèse sur la nature de l'obstacle ? (Cela vous rapportera le double de point en cas de bonne réponse ou vous perdrez tout si vous vous etes trompé)");
             do{
                 msg=input.nextLine();
@@ -182,7 +204,7 @@ public class Jeu {
             getTab().getCases()[p.getX()][p.getY()]=new CNormale(p);
         }
         else{
-            System.out.println("Vous vous êtes trompé.");
+            this.fenetre.Historique.append("\nVous vous êtes trompé.");
         }
     } 
     public Position hypoPos(){
