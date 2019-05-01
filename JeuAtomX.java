@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_1;
+package atomx_1_0;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -81,8 +81,59 @@ public class JeuAtomX extends javax.swing.JFrame {
                 }
             }
         }
-        this.lejeu = new Jeu(taille, this);
         Historique.append("\nCliquer sur une des cases blanches pour lancer votre particule.");
+        pack();
+    }
+    private void initJeu(int taille, String demonstration)
+    {
+        int cpt=1;
+        int cptnoir=1;
+        PCentre.removeAll();
+        PCentre.setLayout(new GridLayout(taille+2, taille+2));
+        for(int i=0; i<taille+2; i++)
+        {
+            for(int j=0; j<taille+2; j++)
+            {
+                if(i==0 || i==(taille+1) || j%(taille+1)==0)
+                {
+                    if((j==0&&i==0) || (j==0&&i==(taille+1)) || (j==(taille+1)&&i==0) || (j==(taille+1)&&i==(taille+1)))
+                    {
+                        JButton button = new JButton();
+                        button.setBackground(new Color(212,208,200));
+                        PCentre.add(button);
+                    }
+                    else
+                    {
+                        JButton button = new JButton();
+                        button.setBackground(Color.white);
+                        button.addActionListener(new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent evt)
+                            {
+                                buttonActionPerformed(evt); 
+                            }
+                        });
+                        button.setName(""+cpt);
+                        cpt++;
+                        PCentre.add(button);
+                    } 
+                }
+                else
+                {
+                    JButton button = new JButton();
+                    button.setBackground(Color.black);
+                    switch(cptnoir)
+                    {
+                        case 33: {button.setForeground(Color.red);button.setText("D");PCentre.add(button);cptnoir++;break;}
+                        case 65: {button.setForeground(Color.red);button.setText("P");PCentre.add(button);cptnoir++;break;}
+                        case 76: {button.setForeground(Color.red);button.setText("T2");PCentre.add(button);cptnoir++;break;}
+                        case 37: {button.setForeground(Color.red);button.setText("T1");PCentre.add(button);cptnoir++;break;}
+                        default: {PCentre.add(button);cptnoir++;break;}
+                    }
+                }
+            }
+        }
+        Historique.append("\nMode: Scenario 1\nCliquer sur une des cases blanches pour lancer votre particule.");
         pack();
     }
     
@@ -122,7 +173,6 @@ public class JeuAtomX extends javax.swing.JFrame {
         }
         else
         {     
-            System.out.println((nombre-this.lejeu.getTaille())/2-1);
             this.lejeu.tour((nombre-this.lejeu.getTaille())/2-1, this.lejeu.getTaille()-1);
         }
     }
@@ -229,10 +279,19 @@ public class JeuAtomX extends javax.swing.JFrame {
       optiondiag.setVisible(true);
       if(optiondiag.isOk())
       {
-          jMenuItem2.setEnabled(false);
-          this.lejeu = new Jeu(optiondiag.getTaille(), this);
-          System.out.println(optiondiag.getTaille());
-          initJeu(optiondiag.getTaille());
+          if(optiondiag.getTaille()==-1)
+          {
+            jMenuItem2.setEnabled(false);
+            byte b = 1;
+            this.lejeu = new Jeu(b, this);
+            initJeu(10, "scenario1");
+          }
+          else
+          {
+            jMenuItem2.setEnabled(false);
+            this.lejeu = new Jeu(optiondiag.getTaille(), this);
+            initJeu(optiondiag.getTaille());
+          }
       }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

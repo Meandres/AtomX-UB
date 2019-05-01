@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package atomx_1_1;
+package atomx_1_0;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -69,18 +69,14 @@ public class Jeu {
         x=getJoueur().getParticule().getPos().getX(); y=getJoueur().getParticule().getPos().getY();
         if(x==-1 || x==getTab().getCases().length || y==-1 || y==getTab().getCases().length){
             this.fenetre.Historique.append("\nVous avez récupéré votre particule avec un poids de "+ getJoueur().getParticule().getPoid()+ " sur la case "+getJoueur().getParticule().getPos());
-            this.fenetre.pack();
             System.out.println("\nVous avez récupéré votre particule avec un poids de "+ getJoueur().getParticule().getPoid()+ " sur la case "+getJoueur().getParticule().getPos());
             getJoueur().setSolde(getJoueur().getSolde()+getJoueur().getParticule().getPoid());
             }
         else
         {
             this.fenetre.Historique.append("\nVous n'avez pas récupéré votre particule.");
-            this.fenetre.pack();
             System.out.println("\nVous n'avez pas récupéré votre particule.");
         }
-        this.fenetre.pack();
-        this.fenetre.repaint();
         System.out.println("Voulez-vous faire une hypothèse ?");
         do{
             msg=input.nextLine();

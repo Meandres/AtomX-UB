@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_1;
+package atomx_1_0;
 
 /**
  *
@@ -24,7 +24,7 @@ public class OptionsDlg extends javax.swing.JDialog {
     public int getTaille() {
         return taille;
     }
-
+    
     public boolean isOk() {
         return ok;
     }
@@ -145,7 +145,16 @@ public class OptionsDlg extends javax.swing.JDialog {
             }
         });
     }
-
+    private javax.swing.JButton Annuler;
+    public javax.swing.JTextPane Taille;
+    private javax.swing.JButton Valider;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+/*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Annuler;
     private javax.swing.JTextPane Taille;
@@ -157,4 +166,5 @@ public class OptionsDlg extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+*/
 }
