@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class LesCases {
     private Case[][] cases;
     private static double probaObstacles=0.08;//entre 0 et 1
-    private static final int[] scenarios1={4,3,6,6,5,2,2,6,3};
+    private static final int[] scenarios1={4,3,6,6,5,2,2,6,3}; //positions d'origine
+	
+	//{3,5,6,3,2,4,6,7,3} autres positions possibles, a reessayer
 
     public void addCase(Case c) {
         cases[c.getPos().getX()][c.getPos().getY()]=c;
@@ -24,9 +26,6 @@ public class LesCases {
     }
     public static double getProbaObstacles() {
         return probaObstacles;
-    }
-    public static void setProbaObstacles(double probaObstacles) {
-        LesCases.probaObstacles = probaObstacles;
     }
     public LesCases(int taille){
         cases=new Case[taille][taille];
@@ -64,9 +63,9 @@ public class LesCases {
                         c=tab.getCases()[i][j]=new CNormale(new Position(i, j));
                     }
                 }
-                tab.getCases()[scenarios1[0]][scenarios1[1]]=new Prison(new Position(scenarios1[0], scenarios1[1]), poid);
-                tab.getCases()[scenarios1[2]][scenarios1[3]]=new Teleporteur(new Position(scenarios1[2], scenarios1[3]), poid, new Position(scenarios1[4],scenarios1[5]));
-                tab.getCases()[scenarios1[6]][scenarios1[7]]=new Deviateur(new Position(scenarios1[6], scenarios1[7]), poid, scenarios1[8]);
+                tab.addCase(new Prison(new Position(scenarios1[0], scenarios1[1]), poid));
+                tab.addCase(new Teleporteur(new Position(scenarios1[2], scenarios1[3]), poid, new Position(scenarios1[4],scenarios1[5])));
+                tab.addCase(new Deviateur(new Position(scenarios1[6], scenarios1[7]), poid, scenarios1[8]));
                 break;
             }
         }
