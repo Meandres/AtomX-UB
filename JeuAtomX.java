@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_1;
+package atomx_1_0;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
@@ -38,6 +39,7 @@ public class JeuAtomX extends javax.swing.JFrame {
         this.joueur = new Joueur();
         jMenuItem2.setEnabled(false);
         jMenuItem3.setEnabled(false);
+        this.setIconImage(new ImageIcon(getClass().getResource("../Images/AtomX.png")).getImage());
     }
 
     private void initJeu(int taille)

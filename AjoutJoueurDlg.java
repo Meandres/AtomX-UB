@@ -8,7 +8,7 @@
  *
  * @author gb346159
  */
-package atomx_1_1;
+package atomx_1_0;
 
 import java.awt.*;
 import javax.swing.*;
@@ -25,6 +25,7 @@ public class AjoutJoueurDlg extends javax.swing.JDialog {
         this.nj = new Joueur(); // Création d'une instance de nouveau joueur "par défaut"
         this.ok = false; // Indique l'état de la fenêtre
         setTitle("Ajout d'un joueur");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Images/Joueur.png")).getImage());
     }
 
     /**

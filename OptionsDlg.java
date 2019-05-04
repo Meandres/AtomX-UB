@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_1;
+package atomx_1_0;
+
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +21,7 @@ public class OptionsDlg extends javax.swing.JDialog {
         initComponents();
         setResizable(false);
         setTitle("Options");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Images/Options.png")).getImage());
     }
 
     public int getTaille() {
