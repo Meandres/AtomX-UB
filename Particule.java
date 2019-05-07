@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atomx_1_0;
+package atomx_1_1;
 
 /**
  *
@@ -51,37 +51,7 @@ public class Particule {
         setPoid(getPoid()-poidObstacle);
     }
     public void tourne(int tours){
-        Direction d=this.getDir();
-        if(tours%2==0){
-            if(tours%4==2){
-                if(d.getX()!=0)
-                    d.setX(-this.getDir().getX());
-                else
-                    d.setY(-this.getDir().getY());
-                }
-            }
-        else{
-            if(tours%4==1){
-                if(d.getX()!=0){
-                    d.setY(d.getX());
-                    d.setX(0);
-                    }
-                else{
-                    d.setX(-d.getY());
-                    d.setY(0);
-                    }
-                }
-            else{//tours%4==3
-                if(d.getX()!=0){
-                    d.setY(-d.getX());
-                    d.setX(0);
-                    }
-                else{
-                    d.setX(d.getY());
-                    d.setY(0);
-                    }
-                }
-            }
+        this.getDir().tourne(tours);
         }
 
     @Override
