@@ -18,7 +18,7 @@ public class Deviateur extends Obstacle {
     
     @Override
     public void action(){
-        this.getContenu().tourne(tours);
+        this.getContenu().tourne(this.getTours());
         this.getContenu().nvPoid(this.getPoid());
         super.action();
     }

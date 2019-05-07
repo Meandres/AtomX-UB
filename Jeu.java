@@ -56,7 +56,7 @@ public class Jeu {
         String msg; boolean continuer=true;
         if(!p.isValide(getTab().getCases().length))
             System.exit(0);
-       System.out.println("Entrez le poids que vous souhaitez attribuer à la particule :");
+        System.out.println("Entrez le poids que vous souhaitez attribuer à la particule :");
         do{
             poid=input.nextInt();
             }while(getJoueur().getSolde()-poid<0);

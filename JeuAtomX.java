@@ -39,6 +39,9 @@ public class JeuAtomX extends javax.swing.JFrame {
         jMenuItem2.setEnabled(false);
         jMenuItem3.setEnabled(false);
     }
+    public JeuAtomX(byte parametre){
+        
+    }
 
     private void initJeu(int taille)
     {
@@ -231,7 +234,6 @@ public class JeuAtomX extends javax.swing.JFrame {
       {
           jMenuItem2.setEnabled(false);
           this.lejeu = new Jeu(optiondiag.getTaille(), this);
-          System.out.println(optiondiag.getTaille());
           initJeu(optiondiag.getTaille());
       }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
