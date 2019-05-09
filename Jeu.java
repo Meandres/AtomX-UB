@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package atomx_1_1;
+package atomx1_1;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFrame;

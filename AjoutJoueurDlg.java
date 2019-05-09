@@ -8,7 +8,7 @@
  *
  * @author gb346159
  */
-package atomx_1_1;
+package atomx1_1;
 
 import java.awt.*;
 import javax.swing.*;

@@ -8,7 +8,7 @@
  *
  * @author nous
  */
-package atomx_1_1;
+package atomx1_1;
 
 public class AtomX {
     public static void main(String args[]){
